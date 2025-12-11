@@ -1,0 +1,20 @@
+{
+	"name": "portfolio-microservices",
+	"version": "1.0.0",
+	"description": "System mikroserwisów - Prywatny Portfel Inwestycyjny",
+	"private": true,
+	"workspaces": [
+		"apps/*"
+	],
+	"scripts": {
+		"build": "npm run build --workspaces",
+		"start:dev": "npm run start:dev --workspaces",
+		"start:prod": "npm run start:prod --workspaces",
+		"lint": "npm run lint --workspaces"
+	},
+	"devDependencies": {
+		"@nestjs/cli": "^10.0.0",
+		"@nestjs/schematics": "^10.0.0",
+		"typescript": "^5.3.0"
+	}
+}

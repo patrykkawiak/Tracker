@@ -1,0 +1,52 @@
+services:
+  postgres-auth:
+    image: postgres:15
+    container_name: portfolio-postgres-auth
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: portfolio_auth
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_auth_data:/var/lib/postgresql/data
+    networks:
+      - portfolio-network
+
+  postgres-portfolio:
+    image: postgres:15
+    container_name: portfolio-postgres-portfolio
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: portfolio_portfolio
+    ports:
+      - "5436:5432"
+    volumes:
+      - postgres_portfolio_data:/var/lib/postgresql/data
+    networks:
+      - portfolio-network
+
+  postgres-logs:
+    image: postgres:15
+    container_name: portfolio-postgres-logs
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: portfolio_logs
+    ports:
+      - "5437:5432"
+    volumes:
+      - postgres_logs_data:/var/lib/postgresql/data
+    networks:
+      - portfolio-network
+
+volumes:
+  postgres_auth_data:
+  postgres_portfolio_data:
+  postgres_logs_data:
+
+networks:
+  portfolio-network:
+    driver: bridge
+
